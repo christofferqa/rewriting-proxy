@@ -79,6 +79,10 @@ function walkDOM(node, url, rewriteFunc, headerHTML, headerURLs, options) {
         }
     }
 
+    if (options.onBeforeNodeVisited) {
+        options.onBeforeNodeVisited(node);
+    }
+
     var tagName = (node.tagName || "").toLowerCase();
     if (tagName === 'head' && (headerHTML || headerURLs)) {
         // then, insert header code as first child
